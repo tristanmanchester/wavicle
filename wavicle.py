@@ -88,8 +88,11 @@ def calculator(e, m):
     h = 4.1356677e-15
     c = 3e8
     wavelength = h / math.sqrt(2 * (m / (c ** 2)) * e)
+    if e/m > 0.04:
+        print('Warning: energy is high. Relativistic effects are not considered in this program.')
     return f'The De Broglie wavelenth of your particle is {wavelength * (10 ** 9)} nm'
 
 
 if __name__ == '__main__':
     main()
+
