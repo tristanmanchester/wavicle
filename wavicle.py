@@ -19,7 +19,7 @@ def particle_select():
     while True:
         particle = input('Choose your particle or enter a mass: ').lower()
         if (particle == 'proton' or particle == 'neutron' or particle == 'electron' or particle == 'muon' or
-                (particle.split('e')[0].replace('.', '', 1).isdigit() and particle.split('e')[1].replace('.', '',
+                (len(particle.split('e')) == 2 and particle.split('e')[0].replace('.', '', 1).isdigit() and particle.split('e')[1].replace('.', '',
                                                                                                          1).isdigit())):
             break
     if particle.isalpha():
@@ -74,7 +74,7 @@ def energy_select(m):
         unit = 'm/s'
     while True:
         value = input(f'Enter the {choice} ({unit}) in the format xEy: ').lower().split('e')
-        if value[0].replace('.', '', 1).isdigit() and value[1].replace('.', '', 1).isdigit():
+        if len(value) == 2 and value[0].replace('.', '', 1).isdigit() and value[1].replace('.', '', 1).isdigit():
             break
     value = float(value[0]) * 10 ** float(value[1])
     if unit == 'm/s' or unit == 'j':
@@ -95,4 +95,3 @@ def calculator(e, m):
 
 if __name__ == '__main__':
     main()
-
