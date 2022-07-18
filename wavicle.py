@@ -59,7 +59,6 @@ def unit_converter(v, u, m=1):
 def energy_select(m):
     choice = None
     unit = None
-    value = None
     while True:
         e_or_v = input('Do you want to use energy or velocity? ').lower()
         if e_or_v == 'energy' or e_or_v == 'velocity':
