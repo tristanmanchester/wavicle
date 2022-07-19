@@ -19,14 +19,14 @@ def particle_select():
     while True:
         particle = input('Choose your particle or enter a mass: ').lower()
         if (particle == 'proton' or particle == 'neutron' or particle == 'electron' or particle == 'muon' or
-                (len(particle.split('e')) == 2 and particle.split('e')[0].replace('.', '', 1).isdigit() and particle.split('e')[1].replace('.', '',
+                (len(particle.split('e')) == 2 and particle.split('e')[0].replace('.', '', 1).isdigit() and particle.split('e')[1][-1].replace('.', '',
                                                                                                          1).isdigit())):
             break
     if particle.isalpha():
         if particle == 'electron':
             mass = 510.99895000 * 10 ** 3
         elif particle == 'proton':
-            mass = 938.27208816 * 10 ** 6
+            mass = 938.27208816 * 10 * 6
         elif particle == 'neutron':
             mass = 939.56542052 * 10 ** 6
         elif particle == 'muon':
@@ -59,6 +59,7 @@ def unit_converter(v, u, m=1):
 def energy_select(m):
     choice = None
     unit = None
+    unit_text = None
     while True:
         e_or_v = input('Do you want to use energy or velocity? ').lower()
         if e_or_v == 'energy' or e_or_v == 'velocity':
@@ -73,7 +74,13 @@ def energy_select(m):
         choice = 'velocity'
         unit = 'm/s'
     while True:
-        value = input(f'Enter the {choice} ({unit}) in the format xEy: ').lower().split('e')
+        if unit == 'ev':
+            unit_text = 'eV'
+        elif unit == 'j':
+            unit_text = 'J'
+        elif unit == 'm/s':
+            unit_text = 'm/s'
+        value = input(f'Enter the {choice} ({unit_text}) in the format xEy: ').lower().split('e')
         if len(value) == 2 and value[0].replace('.', '', 1).isdigit() and value[1].replace('.', '', 1).isdigit():
             break
     value = float(value[0]) * 10 ** float(value[1])
