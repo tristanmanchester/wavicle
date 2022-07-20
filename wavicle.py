@@ -26,7 +26,7 @@ def particle_select():
         if particle == 'electron':
             mass = 510.99895000 * 10 ** 3
         elif particle == 'proton':
-            mass = 938.27208816 * 10 * 6
+            mass = 938.27208816 * 10 ** 6
         elif particle == 'neutron':
             mass = 939.56542052 * 10 ** 6
         elif particle == 'muon':
