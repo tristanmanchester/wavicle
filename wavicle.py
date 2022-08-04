@@ -81,7 +81,7 @@ def energy_select(m):
         elif unit == 'm/s':
             unit_text = 'm/s'
         value = input(f'Enter the {choice} ({unit_text}) in the format xEy: ').lower().split('e')
-        if len(value) == 2 and value[0].replace('.', '', 1).isdigit() and value[1].replace('.', '', 1).isdigit():
+        if len(value) == 2 and value[0].replace('.', '', 1).isdigit() and value[1].replace('-', '', 1).isdigit():
             break
     value = float(value[0]) * 10 ** float(value[1])
     if unit == 'm/s' or unit == 'j':
@@ -97,8 +97,7 @@ def calculator(e, m):
     wavelength = h / math.sqrt(2 * (m / (c ** 2)) * e)
     if e/m > 0.04:
         print('Warning: energy is high. Relativistic effects are not considered in this program.')
-    return f'The De Broglie wavelenth of your particle is {wavelength * (10 ** 9)} nm'
-
+    return f'The De Broglie wavelenth of your particle is {round(wavelength * (10 ** 9),3)} nm'
 
 if __name__ == '__main__':
     main()
